@@ -33,17 +33,62 @@ pipeline {
             }
         }
         
+        stage('Check Docker Installation') {
+            steps {
+                script {
+                    try {
+                        sh 'which docker || echo "Docker not found"'
+                        sh 'docker --version || echo "Docker not available"'
+                    } catch(Exception e) {
+                        echo "Docker is not installed or not in PATH. Skipping Docker stages."
+                        echo "To enable Docker builds, make sure Docker is installed and available to the Jenkins user."
+                    }
+                }
+            }
+        }
+        
         stage('Docker Build') {
+            when {
+                expression {
+                    try {
+                        sh(script: 'which docker', returnStatus: true) == 0
+                    } catch(Exception e) {
+                        return false
+                    }
+                }
+            }
             steps {
                 sh 'docker build -t gericht-react-app .'
             }
         }
         
         stage('Docker Push') {
+            when {
+                expression {
+                    try {
+                        sh(script: 'which docker', returnStatus: true) == 0
+                    } catch(Exception e) {
+                        return false
+                    }
+                }
+            }
             steps {
                 echo 'This is where you would push to your Docker registry'
                 // sh 'docker push your-registry/gericht-react-app:latest'
             }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Pipeline completed successfully! React application built successfully.'
+        }
+        failure {
+            echo 'Pipeline failed. Check the logs for details.'
+        }
+        always {
+            echo 'Cleaning up workspace...'
+            // Add cleanup steps if needed
         }
     }
 }
