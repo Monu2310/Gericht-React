@@ -1,6 +1,10 @@
 pipeline {
     agent any
     
+    tools {
+        nodejs 'NodeJS' // This assumes you have NodeJS configured in Jenkins Global Tool Configuration
+    }
+    
     stages {
         stage('Checkout') {
             steps {
@@ -10,6 +14,8 @@ pipeline {
         
         stage('Install Dependencies') {
             steps {
+                sh 'npm -v'
+                sh 'node -v'
                 sh 'npm install'
             }
         }
