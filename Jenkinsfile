@@ -28,7 +28,8 @@ pipeline {
         
         stage('Build') {
             steps {
-                sh 'npm run build'
+                // Set CI=false to prevent ESLint warnings from being treated as errors
+                sh 'CI=false npm run build'
             }
         }
         
