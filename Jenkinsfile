@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:16-alpine'
-        }
-    }
+    agent any
     
     stages {
         stage('Checkout') {
@@ -31,14 +27,12 @@ pipeline {
         }
         
         stage('Docker Build') {
-            agent any
             steps {
                 sh 'docker build -t gericht-react-app .'
             }
         }
         
         stage('Docker Push') {
-            agent any
             steps {
                 echo 'This is where you would push to your Docker registry'
                 // sh 'docker push your-registry/gericht-react-app:latest'
