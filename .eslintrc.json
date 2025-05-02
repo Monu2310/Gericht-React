@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "react-app",
+    "react-app/jest"
+  ],
+  "rules": {
+    "import/no-anonymous-default-export": "warn",
+    "jsx-a11y/alt-text": "warn"
+  }
+}

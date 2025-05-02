@@ -16,7 +16,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.{js,jsx}",
+    "lint:fix": "eslint --fix src/**/*.{js,jsx}",
+    "format": "prettier --write src/**/*.{js,jsx,css}",
+    "docker:build": "docker build -t gericht-react-app .",
+    "docker:run": "docker run -p 3000:80 gericht-react-app",
+    "deploy:local": "npm run build && npm run docker:build && npm run docker:run"
   },
   "eslintConfig": {
     "extends": [
