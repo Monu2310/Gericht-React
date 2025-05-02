@@ -5,11 +5,13 @@ A modern React-based restaurant website with integrated DevOps practices.
 ## Technologies & Tools Integrated
 
 ### Core Technologies
+
 - React.js
 - JavaScript
 - HTML/CSS
 
 ### DevOps & Continuous Integration
+
 - **Docker**: Containerization for consistent environments
 - **Jenkins**: Continuous Integration and automated builds
 - **GitHub Actions**: Additional CI/CD pipeline
@@ -48,6 +50,7 @@ docker-compose up -d
 ## Jenkins Integration
 
 The project is configured with Jenkins for CI/CD. The Jenkinsfile defines a pipeline that:
+
 - Installs dependencies
 - Runs tests
 - Builds the application
@@ -76,8 +79,7 @@ The project is configured with Jenkins for CI/CD. The Jenkinsfile defines a pipe
 ## Environment Variables
 
 The project uses environment variables for configuration:
+
 - `REACT_APP_API_URL` - Backend API URL
 - `REACT_APP_APP_NAME` - Application name
 - `REACT_APP_VERSION` - Application version
-
-

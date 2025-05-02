@@ -1,8 +1,8 @@
-import React from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { MdOutlineRestaurantMenu } from "react-icons/md";
-import images from "../../constants/images";
-import "./Navbar.css";
+import React from 'react';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { MdOutlineRestaurantMenu } from 'react-icons/md';
+import images from '../../constants/images';
+import './Navbar.css';
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = React.useState(false);
@@ -38,11 +38,7 @@ const Navbar = () => {
         </a>
       </div>
       <div className="app__navbar-smallscreen">
-        <GiHamburgerMenu
-          color="#fff"
-          fontSize={27}
-          onClick={() => setToggleMenu(true)}
-        />
+        <GiHamburgerMenu color="#fff" fontSize={27} onClick={() => setToggleMenu(true)} />
         {toggleMenu && (
           <div className="app__navbar-smallscreen_overlay flex__center slide-bottom">
             <MdOutlineRestaurantMenu
